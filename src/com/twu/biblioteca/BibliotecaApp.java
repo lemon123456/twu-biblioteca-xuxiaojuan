@@ -1,6 +1,7 @@
 package com.twu.biblioteca;
 
 import com.twu.biblioteca.entity.Book;
+import com.twu.biblioteca.service.GetInputHelper;
 import com.twu.biblioteca.service.LibraryService;
 
 import java.util.List;
@@ -13,16 +14,45 @@ public class BibliotecaApp {
     public static void main(String[] args) {
 
         bibliotecaApp.showWelcomeMessage();
-        bibliotecaApp.showMainMenu();
-        bibliotecaApp.showBooksOfLibrary();
+        bibliotecaApp.userOption();
+    }
+
+
+    public void userOption(){
+        int input = -1;
+        while(input < 0){
+            showMainMenu();
+            input = Integer.parseInt(GetInputHelper.getInput());
+            switch (input){
+                case 0:
+                    System.out.println("-------------- Quit --------------\n");
+                    break;
+                case 1:
+                    bibliotecaApp.showBooksOfLibrary();
+                    break;
+                case 2:
+                    System.out.println("checkout");
+                    break;
+                case 3:
+                    System.out.println("return");
+                    break;
+                default:
+                    System.out.println("-------------- Select a valid option ---------------");
+            }
+        }
     }
 
     public void showWelcomeMessage(){
-        System.out.println(libraryService.getWelcomeMessage());
+        System.out.println("--------------------- WELCOME TO BIBLIOTECA --------------------\n");
     }
 
     public void showMainMenu(){
-        System.out.println(libraryService.getMainMenu());
+        System.out.println( "--------------------- Main Menu --------------------\n" +
+                            "[0]Quit \n" +
+                            "[1]List Books \n" +
+                            "[2]Checkout Book \n" +
+                            "[3]Return Book \n" +
+                            "Please enter your choice:");
     }
 
     public void showBooksOfLibrary(){
@@ -30,5 +60,6 @@ public class BibliotecaApp {
         List<Book> books = libraryService.initBookList();
         System.out.println(libraryService.getBooksOfLibrary(books));
     }
+
 }
 

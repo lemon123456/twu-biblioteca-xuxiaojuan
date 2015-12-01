@@ -20,12 +20,6 @@ public class LibraryServiceTest {
     }
 
     @Test
-    public void getWelcomeMessageTest(){
-        String welcomeMessage = "--------------------- WELCOME TO BIBLIOTECA --------------------\n";
-        assertEquals(welcomeMessage,libraryService.getWelcomeMessage());
-    }
-
-    @Test
     public void getBooksOfLibraryTest(){
         List<Book> books = libraryService.initBookList();
         String bookList = "";
@@ -35,11 +29,4 @@ public class LibraryServiceTest {
         assertEquals(bookList,libraryService.getBooksOfLibrary(books));
     }
 
-    @Test
-    public void getMainMenuTest(){
-        String mainMenu = "--------------------- WELCOME TO BIBLIOTECA --------------------\n" +
-                          "[1]List Books \n" +
-                          "Please enter your choice:";
-        assertEquals(mainMenu,libraryService.getMainMenu());
-    }
 }
