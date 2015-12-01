@@ -13,11 +13,16 @@ public class BibliotecaApp {
     public static void main(String[] args) {
 
         bibliotecaApp.showWelcomeMessage();
+        bibliotecaApp.showMainMenu();
         bibliotecaApp.showBooksOfLibrary();
     }
 
     public void showWelcomeMessage(){
         System.out.println(libraryService.getWelcomeMessage());
+    }
+
+    public void showMainMenu(){
+        System.out.println(libraryService.getMainMenu());
     }
 
     public void showBooksOfLibrary(){

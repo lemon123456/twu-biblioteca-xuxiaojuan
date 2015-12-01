@@ -11,6 +11,12 @@ public class LibraryService {
         return "--------------------- WELCOME TO BIBLIOTECA --------------------\n";
     }
 
+    public String getMainMenu(){
+        return "--------------------- WELCOME TO BIBLIOTECA --------------------\n" +
+                "[1]List Books \n" +
+                "Please enter your choice:";
+    }
+
     public String getBooksOfLibrary(List<Book> books){
         String bookList = "";
         int i = 0;

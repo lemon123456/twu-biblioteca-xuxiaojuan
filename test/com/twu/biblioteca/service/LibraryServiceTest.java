@@ -21,17 +21,25 @@ public class LibraryServiceTest {
 
     @Test
     public void getWelcomeMessageTest(){
-        String welcomeMessage = "---------------------WELCOME TO BIBLIOTECA--------------------\n";
+        String welcomeMessage = "--------------------- WELCOME TO BIBLIOTECA --------------------\n";
         assertEquals(welcomeMessage,libraryService.getWelcomeMessage());
     }
 
     @Test
-    public void getBooksOfLibrary(){
+    public void getBooksOfLibraryTest(){
         List<Book> books = libraryService.initBookList();
         String bookList = "";
         for (int i=0;i<books.size();i++){
             bookList += "("+(i+1)+")"+books.get(i).getName()+","+books.get(i).getAuthor()+","+books.get(i).getYearPublished()+"\n";
         }
         assertEquals(bookList,libraryService.getBooksOfLibrary(books));
+    }
+
+    @Test
+    public void getMainMenuTest(){
+        String mainMenu = "--------------------- WELCOME TO BIBLIOTECA --------------------\n" +
+                          "[1]List Books \n" +
+                          "Please enter your choice:";
+        assertEquals(mainMenu,libraryService.getMainMenu());
     }
 }
