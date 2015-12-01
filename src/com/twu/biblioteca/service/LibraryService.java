@@ -7,8 +7,18 @@ import java.util.List;
 
 public class LibraryService {
 
-    public String welcomeMessage() {
-        return "---------------------WELCOME TO BIBLIOTECA--------------------\n";
+    public String getWelcomeMessage() {
+        return "--------------------- WELCOME TO BIBLIOTECA --------------------\n";
+    }
+
+    public String getBooksOfLibrary(List<Book> books){
+        String bookList = "";
+        int i = 0;
+        for(Book book: books){
+            bookList += "("+(i+1)+")"+book.getName()+","+book.getAuthor()+","+book.getYearPublished()+"\n";
+            i++;
+        }
+        return bookList;
     }
 
     public List<Book> initBookList() {
