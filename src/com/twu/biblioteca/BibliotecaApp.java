@@ -5,10 +5,11 @@ import com.twu.biblioteca.service.LibraryService;
 public class BibliotecaApp {
 
     static BibliotecaApp bibliotecaApp = new BibliotecaApp();
-    LibraryService libraryService = new LibraryService();
+    static LibraryService libraryService = new LibraryService();
 
     public static void main(String[] args) {
         bibliotecaApp.showWelcomeMessage();
+        libraryService.initBookList();
     }
 
     public void showWelcomeMessage(){
