@@ -1,11 +1,19 @@
 package com.twu.biblioteca.service;
 
 import com.twu.biblioteca.entity.Book;
+import com.twu.biblioteca.entity.User;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class LibraryService {
+
+    public List<User> initUserList(){
+        List<User> users = new ArrayList<User>();
+        users.add(new User("xuxiaojuan","xjxu@thoughtworks.com","15109242137","xxj-1234","1234"));
+        users.add(new User("duying","ydu@thoughtworks.com","13484532121","duy-1234","123"));
+        return users;
+    }
 
     public List<Book> initBookList() {
         List<Book> books = new ArrayList<Book>();
