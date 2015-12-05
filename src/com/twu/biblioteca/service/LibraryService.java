@@ -11,9 +11,21 @@ public class LibraryService {
     public List<User> initUserList(){
         List<User> users = new ArrayList<User>();
         users.add(new User("xuxiaojuan","xjxu@thoughtworks.com","15109242137","xxj-1234","1234"));
-        users.add(new User("duying","ydu@thoughtworks.com","13484532121","duy-1234","123"));
+        users.add(new User("duying","ydu@thoughtworks.com","13484532121","duy-1234","1234"));
         return users;
     }
+
+    public boolean verifyUserBy(String libraryNumber,String password){
+        List<User> users = initUserList();
+
+        for(User user : users){
+            if(user.getLibraryNumber().equals(libraryNumber) && user.getPassword().equals(password))
+                return true;
+        }
+        return false;
+
+    }
+
 
     public List<Book> initBookList() {
         List<Book> books = new ArrayList<Book>();
