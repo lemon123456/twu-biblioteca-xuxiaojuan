@@ -23,7 +23,19 @@ public class LibraryService {
                 return true;
         }
         return false;
+    }
 
+    public String getUserInformationBy(String libraryNumber,String password){
+        List<User> users = initUserList();
+
+        for(User user : users){
+            if(user.getLibraryNumber().equals(libraryNumber) && user.getPassword().equals(password)){
+                return "User Name: "+user.getUserName()+"\n"+
+                        "Email Address: "+user.getEmailAddress()+"\n"+
+                        "Phone Number: "+user.getPhoneNumber();
+            }
+        }
+        return "Please update your information.";
     }
 
 
