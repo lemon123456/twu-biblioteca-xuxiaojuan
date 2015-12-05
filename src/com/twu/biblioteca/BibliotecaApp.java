@@ -1,6 +1,7 @@
 package com.twu.biblioteca;
 
 import com.twu.biblioteca.entity.Book;
+import com.twu.biblioteca.entity.Library;
 import com.twu.biblioteca.service.GetInputHelper;
 import com.twu.biblioteca.service.LibraryService;
 
@@ -14,6 +15,7 @@ public class BibliotecaApp {
     public static void main(String[] args) {
 
         bibliotecaApp.showWelcomeMessage();
+        bibliotecaApp.userLogin();
         bibliotecaApp.userOption();
     }
 
@@ -23,11 +25,25 @@ public class BibliotecaApp {
         System.out.println("--------------------- WELCOME TO BIBLIOTECA --------------------\n");
     }
 
+    public void userLogin(){
+        System.out.println("Please enter your library_number: ");
+        String libraryNumber = GetInputHelper.getInput();
+
+        System.out.println("Please enter your password: ");
+        String password = GetInputHelper.getInput();
+
+        if(libraryService.verifyUserBy(libraryNumber,password)){
+            System.out.println("\nLogin Successfully\n");
+            bibliotecaApp.showMainMenu();
+        }else{
+            System.out.println("\nLibrary Number or Password Wrong!\n");
+            userLogin();
+        }
+    }
 
     public void userOption(){
         int input = -1;
         while(input < 0){
-            showMainMenu();
             input = Integer.parseInt(GetInputHelper.getInput());
             switch (input){
                 case 0:
@@ -53,7 +69,7 @@ public class BibliotecaApp {
                             "[0]Quit \n" +
                             "[1]List Books \n" +
                             "[2]Checkout Book \n" +
-                            "[3]Return Book \n" +
+                            "[3]Return Book \n\n" +
                             "Please enter your choice:");
     }
 
