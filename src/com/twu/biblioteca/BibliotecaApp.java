@@ -18,6 +18,12 @@ public class BibliotecaApp {
     }
 
 
+
+    public void showWelcomeMessage(){
+        System.out.println("--------------------- WELCOME TO BIBLIOTECA --------------------\n");
+    }
+
+
     public void userOption(){
         int input = -1;
         while(input < 0){
@@ -40,10 +46,6 @@ public class BibliotecaApp {
                     System.out.println("-------------- Select a valid option ---------------");
             }
         }
-    }
-
-    public void showWelcomeMessage(){
-        System.out.println("--------------------- WELCOME TO BIBLIOTECA --------------------\n");
     }
 
     public void showMainMenu(){
