@@ -1,6 +1,7 @@
 package com.twu.biblioteca.service;
 
 import com.twu.biblioteca.entity.Book;
+import com.twu.biblioteca.entity.User;
 import junit.framework.Assert;
 import org.junit.Before;
 import org.junit.Test;
@@ -20,6 +21,12 @@ public class LibraryServiceTest {
     }
 
     @Test
+    public void initBookListTest(){
+        List<Book> books = libraryService.initBookList();
+        assertEquals(4,books.size());
+    }
+
+    @Test
     public void getBooksOfLibraryTest(){
         List<Book> books = libraryService.initBookList();
         String bookList = "";
@@ -27,6 +34,12 @@ public class LibraryServiceTest {
             bookList += "("+(i+1)+")"+books.get(i).getName()+","+books.get(i).getAuthor()+","+books.get(i).getYearPublished()+"\n";
         }
         assertEquals(bookList,libraryService.getBooksOfLibrary(books));
+    }
+
+    @Test
+    public void initUserListTest(){
+        List<User> users = libraryService.initUserList();
+        assertEquals(2,users.size());
     }
 
     @Test
