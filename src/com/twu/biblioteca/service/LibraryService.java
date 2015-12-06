@@ -8,10 +8,10 @@ import java.util.List;
 
 public class LibraryService {
 
-    public static List<Book> bookList = new ArrayList<Book>();
+    public static List<Book> BookList = new ArrayList<Book>();
 
     public void setBookList(){
-        bookList = initBookList();
+        BookList = initBookList();
     }
 
     public List<User> initUserList(){
@@ -65,22 +65,44 @@ public class LibraryService {
 
     public String getBookInformationBy(int number){
         String bookInformation = "";
-        bookInformation += "Name: " + bookList.get(number-1).getName() + "\n" +
-                           "Author: " + bookList.get(number-1).getAuthor() + "\n" +
-                           "Published year: " + bookList.get(number-1).getYearPublished() + "\n";
+        bookInformation += "Name: " + BookList.get(number-1).getName() + "\n" +
+                           "Author: " + BookList.get(number-1).getAuthor() + "\n" +
+                           "Published year: " + BookList.get(number-1).getYearPublished() + "\n";
         return bookInformation;
     }
 
     public String getBooksAvailable(){
         String booksAvailable = "(0)Return to Main Menu \n";
         int i=0;
-        for (Book book: bookList){
+        for (Book book: BookList){
             if (book.getIsBorrowed() == false){
-                booksAvailable += "("+(i+1)+")" + bookList.get(i).getName() +","+ bookList.get(i).getAuthor() +","+ bookList.get(i).getYearPublished() +"\n";
-                i++;
+                booksAvailable += "("+(i+1)+")" + BookList.get(i).getName() +","+ BookList.get(i).getAuthor() +","+ BookList.get(i).getYearPublished() +"\n";
             }
+            i++;
         }
         return booksAvailable;
+    }
+
+    public boolean setOneBookBorrowed(int number){
+        if(BookList.get(number-1).getIsBorrowed() == false) {
+            BookList.get(number-1).setIsBorrowed(true);
+            return true;
+        }else{
+            return false;
+        }
+    }
+
+    public boolean setOneBookAvailable(int number){
+        if(BookList.get(number-1).getIsBorrowed() == true){
+            BookList.get(number-1).setIsBorrowed(false);
+            return true;
+        }else{
+            return false;
+        }
+    }
+
+    public int getBooksSize(){
+        return BookList.size();
     }
 }
 

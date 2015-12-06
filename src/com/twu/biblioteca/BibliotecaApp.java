@@ -79,7 +79,6 @@ public class BibliotecaApp {
     public void showBooksOfLibrary(){
         System.out.println("--------------------- Books Of Library --------------------");
         List<Book> books = libraryService.initBookList();
-        System.out.println(libraryService.getBooksOfLibrary(books));
         System.out.println("Please enter your choice:");
         selectOneBookOption();
     }
@@ -111,6 +110,24 @@ public class BibliotecaApp {
     public void showBooksAvailable(){
         System.out.println("---------------- Books Available -------------------");
         System.out.println(libraryService.getBooksAvailable());
+        System.out.println("Please enter your choice:");
+        bibliotecaApp.selectOneBookToBorrow();
+    }
+
+    public void selectOneBookToBorrow(){
+        int enterNumber = Integer.parseInt(GetInputHelper.getInput());
+        if(enterNumber == 0){
+            showMainMenu();
+        }else if(enterNumber > libraryService.getBooksSize()){
+            System.out.println("Select a valid option:");
+        }else{
+            if(libraryService.setOneBookBorrowed(enterNumber)){
+                System.out.println("Thank you! Enjoy the book!");
+            }else{
+                System.out.println("That book is not available!");
+            }
+            showBooksAvailable();
+        }
     }
 
 

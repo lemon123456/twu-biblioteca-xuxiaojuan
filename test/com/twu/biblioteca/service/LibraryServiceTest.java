@@ -53,7 +53,7 @@ public class LibraryServiceTest {
     @Test
     public void getBooksOfLibraryTest(){
         List<Book> books = libraryService.initBookList();
-        String bookList = "";
+        String bookList = "(0)Return to main menu\n";
         for (int i=0;i<books.size();i++){
             bookList += "("+(i+1)+")"+books.get(i).getName()+","+books.get(i).getAuthor()+","+books.get(i).getYearPublished()+"\n";
         }
@@ -66,6 +66,18 @@ public class LibraryServiceTest {
                                  "Author: James \n" +
                                  "Published year: 23 5,2009";
         assertEquals(bookInformation,libraryService.getBookInformationBy(1));
+    }
+
+    @Test
+    public void setOneBookBorrowedTest(){
+        libraryService.setBookList();
+        assertEquals(true, libraryService.setOneBookBorrowed(2));
+    }
+
+    @Test
+    public void setOneBookAvailableTest(){
+        libraryService.setBookList();
+        assertEquals(false, libraryService.setOneBookAvailable(2));
     }
 
 }
