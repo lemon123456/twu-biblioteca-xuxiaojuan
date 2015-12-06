@@ -8,6 +8,12 @@ import java.util.List;
 
 public class LibraryService {
 
+    public static List<Book> bookList = new ArrayList<Book>();
+
+    public void setBookList(){
+        bookList = initBookList();
+    }
+
     public List<User> initUserList(){
         List<User> users = new ArrayList<User>();
         users.add(new User("xuxiaojuan","xjxu@thoughtworks.com","15109242137","xxj-1234","1234"));
@@ -27,7 +33,6 @@ public class LibraryService {
 
     public String getUserInformationBy(String libraryNumber,String password){
         List<User> users = initUserList();
-
         for(User user : users){
             if(user.getLibraryNumber().equals(libraryNumber) && user.getPassword().equals(password)){
                 return "User Name: "+user.getUserName()+"\n"+
@@ -49,7 +54,7 @@ public class LibraryService {
     }
 
     public String getBooksOfLibrary(List<Book> books){
-        String bookList = "";
+        String bookList = "(0)Return to main menu\n";
         int i = 0;
         for(Book book: books){
             bookList += "("+(i+1)+")"+book.getName()+","+book.getAuthor()+","+book.getYearPublished()+"\n";
@@ -59,12 +64,23 @@ public class LibraryService {
     }
 
     public String getBookInformationBy(int number){
-        List<Book> books = initBookList();
         String bookInformation = "";
-        bookInformation += "Name: " + books.get(number-1).getName() + "\n" +
-                           "Author: " + books.get(number-1).getAuthor() + "\n" +
-                           "Published year: " + books.get(number-1).getYearPublished() + "\n";
+        bookInformation += "Name: " + bookList.get(number-1).getName() + "\n" +
+                           "Author: " + bookList.get(number-1).getAuthor() + "\n" +
+                           "Published year: " + bookList.get(number-1).getYearPublished() + "\n";
         return bookInformation;
+    }
+
+    public String getBooksAvailable(){
+        String booksAvailable = "(0)Return to Main Menu \n";
+        int i=0;
+        for (Book book: bookList){
+            if (book.getIsBorrowed() == false){
+                booksAvailable += "("+(i+1)+")" + bookList.get(i).getName() +","+ bookList.get(i).getAuthor() +","+ bookList.get(i).getYearPublished() +"\n";
+                i++;
+            }
+        }
+        return booksAvailable;
     }
 }
 

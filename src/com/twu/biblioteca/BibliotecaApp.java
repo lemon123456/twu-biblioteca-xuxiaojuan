@@ -14,9 +14,10 @@ public class BibliotecaApp {
 
     public static void main(String[] args) {
 
+        libraryService.setBookList();
         bibliotecaApp.showWelcomeMessage();
         bibliotecaApp.userLogin();
-        bibliotecaApp.userOption();
+
     }
 
 
@@ -53,7 +54,7 @@ public class BibliotecaApp {
                     bibliotecaApp.showBooksOfLibrary();
                     break;
                 case 2:
-                    System.out.println("checkout");
+                    bibliotecaApp.showBooksAvailable();
                     break;
                 case 3:
                     System.out.println("return");
@@ -72,27 +73,47 @@ public class BibliotecaApp {
                             "[3]Return Book \n" +
                             "[4]User Information \n\n" +
                             "Please enter your choice:");
+        bibliotecaApp.userOption();
     }
 
     public void showBooksOfLibrary(){
         System.out.println("--------------------- Books Of Library --------------------");
         List<Book> books = libraryService.initBookList();
         System.out.println(libraryService.getBooksOfLibrary(books));
+        System.out.println("Please enter your choice:");
         selectOneBookOption();
     }
 
     public void selectOneBookOption(){
-        System.out.println("Please enter your choice:");
         int enterNumber = Integer.parseInt(GetInputHelper.getInput());
         int bookSize = libraryService.initBookList().size();
         if (enterNumber == 0){
             showMainMenu();
         }else if(enterNumber > bookSize){
             System.out.println("Select a valid option:");
+            selectOneBookOption();
         }else{
-            System.out.println("Book");
+            showBookInformationby(enterNumber);
         }
     }
+
+    public void showBookInformationby(int no){
+        System.out.println(libraryService.getBookInformationBy(no));
+        System.out.println("Enter 0 to Book List:");
+        int enterNumber = Integer.parseInt(GetInputHelper.getInput());
+        if(enterNumber == 0){
+            showBooksOfLibrary();
+        }else{
+            System.out.println("Select a valid option:");
+        }
+    }
+
+    public void showBooksAvailable(){
+        System.out.println("---------------- Books Available -------------------");
+        System.out.println(libraryService.getBooksAvailable());
+    }
+
+
 
 }
 

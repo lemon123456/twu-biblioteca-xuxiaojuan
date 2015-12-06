@@ -42,7 +42,7 @@ public class Book {
         this.yearPublished = yearPublished;
     }
 
-    public boolean isBorrowed() {
+    public boolean getIsBorrowed() {
         return isBorrowed;
     }
 

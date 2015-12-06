@@ -47,7 +47,7 @@ public class LibraryServiceTest {
     @Test
     public void initBookListTest(){
         List<Book> books = libraryService.initBookList();
-        assertEquals(4,books.size());
+        assertEquals(4, books.size());
     }
 
     @Test
@@ -67,4 +67,5 @@ public class LibraryServiceTest {
                                  "Published year: 23 5,2009";
         assertEquals(bookInformation,libraryService.getBookInformationBy(1));
     }
+
 }
