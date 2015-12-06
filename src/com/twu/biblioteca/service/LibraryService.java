@@ -48,8 +48,8 @@ public class LibraryService {
         List<Book> books = new ArrayList<Book>();
         books.add(new Book("New World", "James", "23 5,2009", false));
         books.add(new Book("New Sport", "Lining", "9 23,2002", false));
-        books.add(new Book("New Music", "Zhujing", "3 23,2007", false));
-        books.add(new Book("New Programming", "Cuicui", "4 25,2008", false));
+        books.add(new Book("New Music", "Zhujing", "3 23,2007", true));
+        books.add(new Book("New Programming", "Cuicui", "4 25,2008", true));
         return books;
     }
 
@@ -90,6 +90,18 @@ public class LibraryService {
         }else{
             return false;
         }
+    }
+
+    public String getBooksBorrowed(){
+        String booksBorrowed = "(0)Return to Main Menu \n";
+        int i=0;
+        for (Book book: BookList){
+            if (book.getIsBorrowed() == true){
+                booksBorrowed += "("+(i+1)+")" + BookList.get(i).getName() +","+ BookList.get(i).getAuthor() +","+ BookList.get(i).getYearPublished() +"\n";
+            }
+            i++;
+        }
+        return booksBorrowed;
     }
 
     public boolean setOneBookAvailable(int number){

@@ -57,7 +57,7 @@ public class BibliotecaApp {
                     bibliotecaApp.showBooksAvailable();
                     break;
                 case 3:
-                    System.out.println("return");
+                    bibliotecaApp.showBooksBorrowed();
                     break;
                 default:
                     System.out.println("-------------- Select a valid option ---------------");
@@ -122,11 +122,34 @@ public class BibliotecaApp {
             System.out.println("Select a valid option:");
         }else{
             if(libraryService.setOneBookBorrowed(enterNumber)){
-                System.out.println("Thank you! Enjoy the book!");
+                System.out.println("Thank you! Enjoy the book!\n");
             }else{
-                System.out.println("That book is not available!");
+                System.out.println("That book is not available!\n");
             }
             showBooksAvailable();
+        }
+    }
+
+    public void showBooksBorrowed(){
+        System.out.println("---------------- Books Borrowed ---------------------");
+        System.out.println(libraryService.getBooksBorrowed());
+        System.out.println("Please enter your choice:");
+        selectOneBookToAvailable();
+    }
+
+    public void selectOneBookToAvailable(){
+        int enterNumber = Integer.parseInt(GetInputHelper.getInput());
+        if(enterNumber == 0){
+            showMainMenu();
+        }else if(enterNumber > libraryService.getBooksSize()){
+            System.out.println("Select a valid option:");
+        }else{
+            if(libraryService.setOneBookAvailable(enterNumber)){
+                System.out.println("Thank you for returning the book! \n");
+            }else{
+                System.out.println("That is not a valid book to return！\n");
+            }
+            showBooksBorrowed();
         }
     }
 

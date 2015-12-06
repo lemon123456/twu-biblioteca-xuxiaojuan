@@ -62,8 +62,8 @@ public class LibraryServiceTest {
 
     @Test
     public void getBookInformationByTest(){
-        String bookInformation = "Name: New World \n" +
-                                 "Author: James \n" +
+        String bookInformation = "Name: New World\n" +
+                                 "Author: James\n" +
                                  "Published year: 23 5,2009";
         assertEquals(bookInformation,libraryService.getBookInformationBy(1));
     }
@@ -71,13 +71,13 @@ public class LibraryServiceTest {
     @Test
     public void setOneBookBorrowedTest(){
         libraryService.setBookList();
-        assertEquals(true, libraryService.setOneBookBorrowed(2));
+        assertEquals(true, libraryService.setOneBookBorrowed(1));
     }
 
     @Test
     public void setOneBookAvailableTest(){
         libraryService.setBookList();
-        assertEquals(false, libraryService.setOneBookAvailable(2));
+        assertEquals(true, libraryService.setOneBookAvailable(3));
     }
 
 }
