@@ -41,10 +41,10 @@ public class LibraryService {
 
     public List<Book> initBookList() {
         List<Book> books = new ArrayList<Book>();
-        books.add(new Book("New WORLD", "James", "23 5,2009", false));
+        books.add(new Book("New World", "James", "23 5,2009", false));
         books.add(new Book("New Sport", "Lining", "9 23,2002", false));
         books.add(new Book("New Music", "Zhujing", "3 23,2007", false));
-        books.add(new Book("New Programming", "Cuicui", "4 25 2008", false));
+        books.add(new Book("New Programming", "Cuicui", "4 25,2008", false));
         return books;
     }
 
@@ -56,6 +56,15 @@ public class LibraryService {
             i++;
         }
         return bookList;
+    }
+
+    public String getBookInformationBy(int number){
+        List<Book> books = initBookList();
+        String bookInformation = "";
+        bookInformation += "Name: " + books.get(number-1).getName() + "\n" +
+                           "Author: " + books.get(number-1).getAuthor() + "\n" +
+                           "Published year: " + books.get(number-1).getYearPublished() + "\n";
+        return bookInformation;
     }
 }
 

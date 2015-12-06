@@ -69,7 +69,8 @@ public class BibliotecaApp {
                             "[0]Quit \n" +
                             "[1]List Books \n" +
                             "[2]Checkout Book \n" +
-                            "[3]Return Book \n\n" +
+                            "[3]Return Book \n" +
+                            "[4]User Information \n\n" +
                             "Please enter your choice:");
     }
 
@@ -77,6 +78,20 @@ public class BibliotecaApp {
         System.out.println("--------------------- Books Of Library --------------------");
         List<Book> books = libraryService.initBookList();
         System.out.println(libraryService.getBooksOfLibrary(books));
+        selectOneBookOption();
+    }
+
+    public void selectOneBookOption(){
+        System.out.println("Please enter your choice:");
+        int enterNumber = Integer.parseInt(GetInputHelper.getInput());
+        int bookSize = libraryService.initBookList().size();
+        if (enterNumber == 0){
+            showMainMenu();
+        }else if(enterNumber > bookSize){
+            System.out.println("Select a valid option:");
+        }else{
+            System.out.println("Book");
+        }
     }
 
 }

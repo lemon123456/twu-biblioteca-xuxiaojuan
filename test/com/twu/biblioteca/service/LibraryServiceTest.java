@@ -59,4 +59,12 @@ public class LibraryServiceTest {
         }
         assertEquals(bookList,libraryService.getBooksOfLibrary(books));
     }
+
+    @Test
+    public void getBookInformationByTest(){
+        String bookInformation = "Name: New World \n" +
+                                 "Author: James \n" +
+                                 "Published year: 23 5,2009";
+        assertEquals(bookInformation,libraryService.getBookInformationBy(1));
+    }
 }
