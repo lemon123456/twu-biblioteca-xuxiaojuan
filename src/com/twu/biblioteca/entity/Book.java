@@ -5,15 +5,17 @@ public class Book {
     private String name;
     private String author;
     private String yearPublished;
+    private boolean isBorrowed;
 
     public Book(){
 
     }
 
-    public Book(String name, String author, String yearPublished) {
+    public Book(String name, String author, String yearPublished, boolean isBorrowed) {
         this.name = name;
         this.author = author;
         this.yearPublished = yearPublished;
+        this.isBorrowed = isBorrowed;
     }
 
     public String getName() {
@@ -38,5 +40,13 @@ public class Book {
 
     public void setYearPublished(String yearPublished) {
         this.yearPublished = yearPublished;
+    }
+
+    public boolean isBorrowed() {
+        return isBorrowed;
+    }
+
+    public void setIsBorrowed(boolean isBorrowed) {
+        this.isBorrowed = isBorrowed;
     }
 }
